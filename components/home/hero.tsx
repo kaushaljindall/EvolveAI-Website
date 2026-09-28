@@ -60,7 +60,7 @@ export function Hero() {
             <span className="flex size-7 items-center justify-center rounded-full bg-ink text-white">
               <Cpu className="size-3.5" aria-hidden="true" />
             </span>
-            Official AI &amp; Tech Club
+            Student-run AI engineering club
             <span className="text-ink/30" aria-hidden="true">
               /
             </span>
