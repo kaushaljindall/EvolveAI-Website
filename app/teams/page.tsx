@@ -6,7 +6,7 @@ import { TeamHero } from '@/components/team/team-hero'
 import { FacultyCard } from '@/components/team/faculty-card'
 import { LeadRoster } from '@/components/team/lead-roster'
 import { ExecutiveGroups } from '@/components/team/executive-groups'
-import { SquadSwitcher } from '@/components/team/squad-switcher'
+import { SquadSections } from '@/components/team/squad-sections'
 import { executives, faculty, leads, squads, teamCount } from '@/lib/team'
 
 export const metadata: Metadata = {
@@ -66,18 +66,18 @@ export default function TeamPage() {
         </section>
 
         <section id="leads" aria-labelledby="leads-title" className="scroll-mt-24 pt-16 md:pt-24">
-          <SectionHead id="leads-title" index="02" label="Leading the way" title="The core" accent="ten." note="Hover a name to meet them. The people setting direction — and bringing everyone along." />
+          <SectionHead id="leads-title" index="02" label="Leading the way" title="The core" accent="ten." note="The people setting direction — and bringing everyone along." />
           <LeadRoster leads={leads} />
         </section>
 
-        <section id="executives" aria-labelledby="executives-title" className="scroll-mt-24 pt-16 md:pt-24">
+        <section id="executives" aria-labelledby="executives-title" className="scroll-mt-24 pt-16 md:pt-24 lg:pt-32">
           <SectionHead id="executives-title" index="03" label="Making it happen" title="Behind every event," accent="an executive." note="Media, content and operations — the ones who make sure the idea actually ships." />
           <ExecutiveGroups executives={executives} />
         </section>
 
         <section id="squads" aria-labelledby="squads-title" className="scroll-mt-24 pt-16 md:pt-24">
-          <SectionHead id="squads-title" index="04" label="Six squads" title="Pick a squad." accent="Meet the crew." note="Every member carries a pass. Switch squads to see who builds, researches, shoots, writes, designs and runs the show." />
-          <SquadSwitcher squads={squads} />
+          <SectionHead id="squads-title" index="04" label="Six squads" title="Six squads." accent="Meet the crew." note="Every member carries a pass — the ones who shoot, write, design, run the show, build and research." />
+          <SquadSections squads={squads} />
         </section>
 
         <aside className="mt-20 flex flex-col justify-between gap-8 overflow-hidden rounded-[28px] bg-lilac/60 px-7 py-10 md:mt-24 md:flex-row md:items-center md:px-12">
