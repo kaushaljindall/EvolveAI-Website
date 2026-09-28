@@ -2,170 +2,98 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } from 'motion/react'
-import { ArrowUpRight, Cpu } from 'lucide-react'
+import { motion, useReducedMotion } from 'motion/react'
+import { ArrowDownRight, ArrowUpRight, Circle, Cpu, Radio } from 'lucide-react'
 import { CodeWindow } from './code-window'
-import { techStack } from '@/lib/data'
 
-const letters = ['E', 'V', 'O', 'L', 'V', 'E']
-const ease = [0.22, 0.8, 0.24, 1] as const
+const signals = ['LLMs', 'Computer vision', 'Robotics', 'Open source']
 
 export function Hero() {
   const reduce = useReducedMotion()
-  const mx = useMotionValue(0)
-  const my = useMotionValue(0)
-  const sx = useSpring(mx, { stiffness: 60, damping: 18 })
-  const sy = useSpring(my, { stiffness: 60, damping: 18 })
-  const glassX = useTransform(sx, (v) => v * 28)
-  const glassY = useTransform(sy, (v) => v * 22)
-  const cardX = useTransform(sx, (v) => v * -10)
-  const cardY = useTransform(sy, (v) => v * -8)
-
-  function onPointerMove(e: React.PointerEvent<HTMLElement>) {
-    if (reduce) return
-    const rect = e.currentTarget.getBoundingClientRect()
-    mx.set((e.clientX - rect.left) / rect.width - 0.5)
-    my.set((e.clientY - rect.top) / rect.height - 0.5)
-  }
 
   return (
-    <section
-      aria-labelledby="hero-title"
-      onPointerMove={onPointerMove}
-      className="relative overflow-hidden px-5 pb-16 pt-28 md:px-8 md:pb-24 md:pt-36"
-    >
-      <motion.div
-        aria-hidden="true"
-        style={{ x: glassX, y: glassY }}
-        className="pointer-events-none absolute -right-40 -top-10 w-[640px] opacity-70 mix-blend-multiply md:-right-24"
-      >
-        <Image
-          src="/images/hero-glass.png"
-          alt=""
-          width={1024}
-          height={1024}
-          priority
-          className="h-auto w-full animate-float [mask-image:radial-gradient(closest-side,black_60%,transparent)]"
-        />
-      </motion.div>
+    <section aria-labelledby="hero-title" className="relative overflow-hidden px-5 pb-20 pt-32 md:px-8 md:pb-28 md:pt-40">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[linear-gradient(to_bottom,rgba(197,255,79,0.12),transparent)]" />
+      <div aria-hidden="true" className="pointer-events-none absolute right-[-15%] top-24 hidden h-[520px] w-[520px] rounded-full border border-ink/10 md:block" />
+      <div aria-hidden="true" className="pointer-events-none absolute right-[-9%] top-40 hidden h-[360px] w-[360px] rounded-full border border-ink/10 md:block" />
 
-      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-10">
-        <div className="flex flex-col gap-7">
-          <motion.p
-            initial={reduce ? false : { opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="glass inline-flex w-fit items-center gap-2.5 rounded-full py-1.5 pl-1.5 pr-4 text-sm font-medium text-ink"
-          >
-            <span className="flex size-7 items-center justify-center rounded-full bg-ink text-white">
-              <Cpu className="size-3.5" aria-hidden="true" />
-            </span>
-            Student-run AI engineering club
-            <span className="text-ink/30" aria-hidden="true">
-              /
-            </span>
-            <span className="text-ink/60">Chitkara University</span>
-          </motion.p>
+      <div className="relative z-10 mx-auto max-w-6xl">
+        <div className="mb-10 flex items-center justify-between border-y border-ink/10 py-3 font-mono text-[10px] uppercase tracking-[0.18em] text-ink/50 md:mb-14">
+          <span className="flex items-center gap-2"><Circle className="size-2 fill-lime text-lime" /> Chitkara University / Rajpura</span>
+          <span className="hidden md:block">Independent student collective / 2021—present</span>
+          <span className="flex items-center gap-2"><Radio className="size-3 text-lime" /> Building in public</span>
+        </div>
 
-          <h1 id="hero-title" className="font-bold leading-[0.84] tracking-[-0.06em] text-ink">
-            <span className="sr-only">Evolve AI — the AI and tech club of Chitkara University</span>
-            <span aria-hidden="true" className="flex text-[clamp(4rem,11vw,8.75rem)]">
-              {letters.map((l, i) => (
-                <motion.span
-                  key={i}
-                  initial={reduce ? false : { opacity: 0, y: '40%', filter: 'blur(16px)' }}
-                  animate={{ opacity: 1, y: '0%', filter: 'blur(0px)' }}
-                  transition={{ duration: 0.9, delay: 0.1 + i * 0.07, ease }}
-                  className="inline-block"
-                >
-                  {l}
-                </motion.span>
-              ))}
-            </span>
-            <span aria-hidden="true" className="flex items-end gap-5">
-              <motion.span
-                initial={reduce ? false : { opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.6, ease: [0.34, 1.4, 0.5, 1] }}
-                className="text-iridescent inline-block pb-1 text-[clamp(4rem,11vw,8.75rem)]"
-              >
-                AI
-              </motion.span>
-              <motion.span
-                initial={reduce ? false : { opacity: 0, x: -12 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, delay: 0.85 }}
-                className="mb-[0.55em] font-mono text-[clamp(0.7rem,1.1vw,0.85rem)] font-medium uppercase leading-snug tracking-[0.2em] text-ink/60"
-              >
-                tech club
-                <br />
-                <span className="text-violet">est. 2021</span>
-              </motion.span>
-            </span>
-          </h1>
+        <div className="grid items-end gap-12 lg:grid-cols-[1.25fr_0.75fr] lg:gap-16">
+          <div>
+            <motion.p
+              initial={reduce ? false : { opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mb-5 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-violet"
+            >
+              A student-run AI engineering club
+            </motion.p>
+            <motion.h1
+              id="hero-title"
+              initial={reduce ? false : { opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="max-w-4xl text-[clamp(4.25rem,12vw,10.5rem)] font-bold leading-[0.78] tracking-[-0.09em] text-ink"
+            >
+              Make the
+              <br />
+              <span className="relative inline-block text-violet">future<span aria-hidden="true" className="absolute -right-5 -top-3 font-mono text-[11px] font-normal tracking-normal text-ink/40">/01</span></span>
+              <br />
+              tangible.
+            </motion.h1>
+            <motion.div
+              initial={reduce ? false : { opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              className="mt-9 flex max-w-2xl flex-col gap-7 md:flex-row md:items-end md:gap-14"
+            >
+              <p className="max-w-md text-pretty text-lg leading-relaxed text-ink/70">
+                Evolve AI is where curious students turn ideas into working systems — from first prompt to final demo, together.
+              </p>
+              <Link href="/projects" className="group inline-flex w-fit items-center gap-2 border-b border-ink pb-2 text-sm font-semibold text-ink transition-colors hover:border-violet hover:text-violet">
+                Explore our work <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </Link>
+            </motion.div>
+          </div>
 
           <motion.div
-            initial={reduce ? false : { opacity: 0, y: 16 }}
+            initial={reduce ? false : { opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.95 }}
-            className="flex max-w-xl flex-col gap-7"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative lg:pb-3"
           >
-            <p className="text-pretty text-lg leading-relaxed text-ink/70 md:text-xl">
-              A student-run tech club where we <strong className="font-semibold text-ink">write code, train models and ship real projects</strong>{' '}
-              — with hackathons, workshops and research along the way.
-            </p>
-
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href="/#contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3.5 font-semibold text-white shadow-[0_18px_40px_-18px_rgba(139,61,255,0.8)] transition-all hover:bg-violet"
-              >
-                Join the club
-                <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </Link>
-              <Link
-                href="/projects"
-                className="glass inline-flex items-center gap-2 rounded-full px-6 py-3.5 font-semibold text-ink transition-colors hover:bg-white"
-              >
-                See what we build
-              </Link>
+            <div className="mb-4 flex items-center justify-between border-b border-ink/10 pb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-ink/50">
+              <span className="flex items-center gap-2"><Cpu className="size-3 text-violet" /> Current operating mode</span>
+              <span>v.2026</span>
             </div>
-
-            <div className="flex flex-col gap-3">
-              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-ink/50">Our stack</p>
-              <ul className="flex flex-wrap gap-2">
-                {techStack.map((t) => (
-                  <li
-                    key={t}
-                    className="rounded-lg border border-ink/10 bg-white/60 px-2.5 py-1 font-mono text-xs text-ink/75 backdrop-blur"
-                  >
-                    {t}
-                  </li>
-                ))}
-              </ul>
+            <CodeWindow />
+            <div className="mt-5 grid grid-cols-2 gap-x-4 gap-y-3 border-t border-ink/10 pt-4 font-mono text-[10px] uppercase tracking-[0.12em] text-ink/50">
+              {signals.map((signal, index) => <span key={signal} className="flex items-center gap-2"><span className="text-lime">0{index + 1}</span>{signal}</span>)}
             </div>
           </motion.div>
         </div>
 
         <motion.div
-          style={{ x: cardX, y: cardY }}
-          initial={reduce ? false : { opacity: 0, y: 30, rotate: 2 }}
-          animate={{ opacity: 1, y: 0, rotate: 0 }}
-          transition={{ duration: 1, delay: 0.4, ease }}
-          className="relative lg:pl-4"
+          initial={reduce ? false : { opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.65 }}
+          className="mt-16 flex flex-col gap-5 border-t border-ink/10 pt-5 md:mt-24 md:flex-row md:items-center md:justify-between"
         >
-          <CodeWindow />
-          <div
-            aria-hidden="true"
-            className="glass absolute -top-8 right-6 hidden items-center gap-3 rounded-2xl px-4 py-3 md:flex"
-          >
-            <span className="bg-iridescent flex size-9 items-center justify-center rounded-xl font-mono text-xs font-bold text-white">
-              50+
-            </span>
-            <span className="text-sm leading-tight text-ink/70">
-              <span className="block font-semibold text-ink">builders</span>
-              across 6 squads
-            </span>
+          <div className="flex items-center gap-4">
+            <Image src="/logos/evolveai-dark.png" alt="Evolve AI" width={120} height={42} className="h-8 w-auto object-contain" />
+            <span className="h-5 w-px bg-ink/15" />
+            <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-ink/50">Powered by people, not hype</span>
+          </div>
+          <div className="flex items-center gap-5 font-mono text-[10px] uppercase tracking-[0.16em] text-ink/45">
+            <Link href="https://github.com/evolveai-chitkara" aria-label="Evolve AI on GitHub" className="transition-colors hover:text-ink">GitHub</Link>
+            <Link href="https://www.linkedin.com/company/evolve-ai-chitkara/" aria-label="Evolve AI on LinkedIn" className="transition-colors hover:text-ink">LinkedIn</Link>
+            <ArrowDownRight className="ml-2 size-5 text-lime" aria-hidden="true" />
           </div>
         </motion.div>
       </div>

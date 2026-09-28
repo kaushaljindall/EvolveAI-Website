@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion } from 'motion/react'
-import { ArrowUpRight, Menu, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { Brand, ChitkaraLogo } from './brand'
 import { navLinks, socials } from '@/lib/data'
 import { cn } from '@/lib/utils'
@@ -60,13 +60,6 @@ export function Nav() {
 
         <div className="flex items-center gap-3">
           <ChitkaraLogo className="hidden h-6 lg:block xl:h-7" />
-          <Link
-            href="/#contact"
-            className="group hidden items-center gap-1.5 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-violet sm:inline-flex"
-          >
-            Join us
-            <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-          </Link>
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -109,13 +102,6 @@ export function Nav() {
                   </Link>
                 </motion.div>
               ))}
-              <Link
-                href="/#contact"
-                onClick={() => setOpen(false)}
-                className="mt-2 flex items-center justify-center gap-2 rounded-2xl bg-ink px-4 py-4 font-semibold text-white"
-              >
-                Join the club <ArrowUpRight className="size-4" />
-              </Link>
               <div className="mt-4 flex items-center justify-between gap-4 px-2 pb-1">
                 <div className="flex flex-wrap gap-3">
                   {socials.map((s) => (
