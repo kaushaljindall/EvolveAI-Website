@@ -54,7 +54,7 @@ export function SquadSwitcher({ squads }: { squads: typeof squadsData }) {
                 {squad.members.length} members
               </p>
               {/* Decorative line */}
-              <div className="mt-8 hidden h-px w-full bg-gradient-to-r from-ink/15 to-transparent lg:block" />
+              <div className="mt-8 hidden h-px w-full bg-linear-to-r from-ink/15 to-transparent lg:block" />
             </div>
 
             {/* Right — Member pass cards */}
@@ -75,9 +75,9 @@ export function SquadSwitcher({ squads }: { squads: typeof squadsData }) {
           {/* Bottom divider between squads */}
           {squadIndex < squads.length - 1 && (
             <div aria-hidden="true" className="mx-auto mt-20 flex items-center gap-4">
-              <div className="h-px flex-1 bg-gradient-to-r from-transparent via-ink/12 to-transparent" />
+              <div className="h-px flex-1 bg-linear-to-r from-transparent via-ink/12 to-transparent" />
               <span className={cn('size-1.5 rounded-full', accents[squad.name])} />
-              <div className="h-px flex-1 bg-gradient-to-r from-transparent via-ink/12 to-transparent" />
+              <div className="h-px flex-1 bg-linear-to-r from-transparent via-ink/12 to-transparent" />
             </div>
           )}
         </div>

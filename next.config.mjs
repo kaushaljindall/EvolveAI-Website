@@ -31,13 +31,7 @@ const nextConfig = {
           { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
         ],
       },
-      // Immutable long-lived cache for Next.js static chunks
-      {
-        source: '/_next/static/:path*',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
-        ],
-      },
+
       // Long-lived cache for public images / fonts
       {
         source: '/:path(.*\.(?:webp|avif|jpg|jpeg|png|gif|svg|woff|woff2|ttf|otf|ico))',

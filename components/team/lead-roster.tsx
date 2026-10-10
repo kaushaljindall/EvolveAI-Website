@@ -52,10 +52,10 @@ function LeadCard({ person, index }: { person: Person; index?: number }) {
   const quote = `${person.name}'s POV`
 
   return (
-    <article className="group relative w-full max-w-[280px] overflow-hidden rounded-[28px] border border-white bg-white p-3.5 shadow-[0_8px_30px_rgba(50,25,90,0.06)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(70,35,120,0.12)]">
+    <article className="group relative w-full max-w-70 overflow-hidden rounded-[28px] border border-white bg-white p-3.5 shadow-[0_8px_30px_rgba(50,25,90,0.06)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(70,35,120,0.12)]">
       
       {/* Image Area */}
-      <div className="relative h-[240px] w-full overflow-hidden rounded-t-[22px]">
+      <div className="relative h-60 w-full overflow-hidden rounded-t-[22px]">
         {/* Person */}
         <div className="absolute inset-0 z-10 flex justify-center transition-transform duration-500 group-hover:scale-[1.03]">
           <Image
@@ -93,13 +93,13 @@ function LeadCard({ person, index }: { person: Person; index?: number }) {
           <div className="flex items-center gap-3">
             <a
               href="#"
-              className="flex size-[38px] items-center justify-center rounded-full bg-slate-50 text-indigo-900/60 transition-all hover:bg-indigo-900 hover:text-white"
+              className="flex size-9.5 items-center justify-center rounded-full bg-slate-50 text-indigo-900/60 transition-all hover:bg-indigo-900 hover:text-white"
             >
               <Linkedin size={16} />
             </a>
             <a
               href="#"
-              className="flex size-[38px] items-center justify-center rounded-full bg-slate-50 text-indigo-900/60 transition-all hover:bg-indigo-900 hover:text-white"
+              className="flex size-9.5 items-center justify-center rounded-full bg-slate-50 text-indigo-900/60 transition-all hover:bg-indigo-900 hover:text-white"
             >
               <Mail size={16} />
             </a>

@@ -45,7 +45,7 @@ export default function TeamPage() {
       />
 
       <div className="mx-auto max-w-6xl">
-        <section id="mentors" aria-labelledby="mentors-title" className="relative scroll-mt-24 overflow-hidden rounded-[32px] bg-ink px-5 py-12 text-white md:rounded-[40px] md:px-12 md:py-16">
+        <section id="mentors" aria-labelledby="mentors-title" className="relative scroll-mt-24 overflow-hidden rounded-4xl bg-ink px-5 py-12 text-white md:rounded-[40px] md:px-12 md:py-16">
           <div aria-hidden="true" className="pointer-events-none absolute -right-32 -top-32 size-96 rounded-full bg-violet/40 blur-[110px]" />
           <Reveal className="relative mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <div>
